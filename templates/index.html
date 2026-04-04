@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta name="author" content="{{ site.author.name }}">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="{{ site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.base_url }}/">
+  <meta property="og:image" content="{{ site.base_url }}/images/avatar.png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@t0msec23">
+
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS" href="{{ site.base_url }}/feed.xml">
+  <link rel="stylesheet" href="{{ site.base_url }}/css/style.css">
+  <link rel="icon" href="{{ site.base_url }}/favicon.ico">
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="{{ site.base_url }}/{{ lang }}/" class="site-logo">
+        {{ site.title }}
+      </a>
+      <nav class="nav-links">
+        <a href="{{ site.base_url }}/{{ lang }}/" class="active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="nav-label">Home</span>
+        </a>
+        <a href="{{ site.base_url }}/{{ lang }}/posts/">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span class="nav-label">Posts</span>
+        </a>
+        <a href="{{ site.base_url }}/{{ lang }}/about/">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="nav-label">About</span>
+        </a>
+        <div class="lang-switch">
+          <a href="{{ site.base_url }}/ja{{ current_path | default('/') }}" {% if lang == 'ja' %}class="active"{% endif %}>JA</a>
+          <a href="{{ site.base_url }}/en{{ current_path | default('/') }}" {% if lang == 'en' %}class="active"{% endif %}>EN</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <div class="site-main">
+
+    <!-- Post List (left/main) -->
+    <section class="posts-list">
+      {% for post in posts %}
+      <article class="post-card" id="post-{{ post.slug }}">
+        <div class="post-card-header">
+          <span class="post-date">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            {{ post.date }}
+          </span>
+          {% if post.category %}
+          <a href="{{ site.base_url }}/{{ lang }}/posts/?category={{ post.category }}" class="post-category-badge">{{ post.category }}</a>
+          {% endif %}
+        </div>
+        <h2 class="post-card-title">
+          <a href="{{ site.base_url }}/{{ lang }}/posts/{{ post.slug }}/">{{ post.title }}</a>
+        </h2>
+        <p class="post-card-summary">{{ post.summary }}</p>
+        <div class="post-card-tags">
+          {% for tag in post.tags %}
+          <a href="{{ site.base_url }}/{{ lang }}/posts/?tag={{ tag }}">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+
+    <!-- Sidebar (right) -->
+    <aside class="sidebar">
+      <!-- Profile -->
+      <div class="sidebar-card profile-card">
+        <img src="{{ site.base_url }}/images/avatar.png" alt="{{ site.author.name }}" class="profile-avatar">
+        <h2 class="profile-name">{{ site.author.name }}</h2>
+        <p class="profile-bio">{{ site.author.bio }}</p>
+        <div class="social-links">
+          <a href="{{ site.author.social.github }}" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </a>
+          <a href="{{ site.author.social.twitter }}" target="_blank" rel="noopener" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M20 4l-6.768 6.768"/></svg>
+          </a>
+          <a href="mailto:{{ site.author.social.email }}" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="sidebar-card">
+        <h3 class="sidebar-heading">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          Categories
+        </h3>
+        <ul class="category-list">
+          {% for cat in categories %}
+          <li>
+            <a href="{{ site.base_url }}/{{ lang }}/posts/?category={{ cat.name }}">
+              <span>{{ cat.name }}</span>
+              <span class="category-count">{{ cat.count }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Tags -->
+      <div class="sidebar-card">
+        <h3 class="sidebar-heading">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+          Tags
+        </h3>
+        <div class="tag-cloud">
+          {% for tag in all_tags %}
+          <a href="{{ site.base_url }}/{{ lang }}/posts/?tag={{ tag }}">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p>&copy; {{ year }} {{ site.title }}</p>
+  </footer>
+
+</body>
+</html>

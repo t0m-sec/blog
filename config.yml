@@ -1,0 +1,19 @@
+site:
+  title: "t0msec's Blog"
+  description: "Security Research & Consulting Blog"
+  base_url: "https://t0m-sec.github.io/blog"
+  language: "ja"
+
+author:
+  name: "t0msec"
+  bio: "Security Researcher | Security Consultant"
+  avatar: "/blog/images/avatar.png"
+  social:
+    github: "https://github.com/t0m-sec"
+    twitter: "https://x.com/t0msec23"
+    email: "t0msec@proton.me"
+
+translation:
+  enabled: true
+  target_language: "en"
+  model: "sonnet-4.5"
