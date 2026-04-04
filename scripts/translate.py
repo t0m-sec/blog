@@ -52,7 +52,7 @@ def compute_md5(filepath):
         return hashlib.md5(f.read()).hexdigest()
 
 
-def translate_markdown(content, metadata, model_name="claude-3-7-sonnet-20250219"):
+def translate_markdown(content, metadata, model_name="claude-3-7-sonnet-latest"):
     """
     Translate Japanese Markdown content and metadata to English
     using Anthropic Claude API.
@@ -156,7 +156,7 @@ def parse_translation_response(response_text, original_metadata):
     return new_metadata, translated_body
 
 
-def translate_about_page(model_name="claude-3-7-sonnet-20250219"):
+def translate_about_page(model_name="claude-3-7-sonnet-latest"):
     """Translate about_ja.md page to English."""
     about_file = ROOT / "pages" / "about_ja.md"
     about_en_file = ROOT / "pages" / "about_en.md"
@@ -223,7 +223,7 @@ def main():
         print("Translation is disabled in config.yml")
         return
 
-    model_name = translation_config.get("model", "claude-3-7-sonnet-20250219")
+    model_name = translation_config.get("model", "claude-3-7-sonnet-latest")
     print(f"  Model: {model_name}")
 
     # Ensure translations directory exists
