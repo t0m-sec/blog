@@ -11,6 +11,7 @@ import json
 import os
 import sys
 from pathlib import Path
+import traceback
 
 import frontmatter
 import yaml
@@ -208,6 +209,7 @@ Output ONLY the translated Markdown content, no explanations.
 
     except Exception as e:
         print(f"  ✗ Failed to translate about_ja.md: {e}")
+        print(traceback.format_exc())
 
 
 def main():
@@ -276,6 +278,8 @@ def main():
 
         except Exception as e:
             print(f"  ✗ Failed to translate {filename}: {e}")
+            print(traceback.format_exc())
+            print(traceback.format_exc())
 
     # Translate about page
     print("\n📄 Checking about page...")
