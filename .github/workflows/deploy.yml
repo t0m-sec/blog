@@ -30,11 +30,11 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y pandoc
 
       - name: Install Python dependencies
-        run: pip install python-frontmatter pyyaml jinja2 google-generativeai
+        run: pip install python-frontmatter pyyaml jinja2 anthropic
 
       - name: Translate posts to English
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/translate.py
 
       - name: Commit translation cache
