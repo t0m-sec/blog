@@ -16,4 +16,4 @@ author:
 translation:
   enabled: true
   target_language: "en"
-  model: "claude-3-7-sonnet-latest"
+  model: "claude-3-5-sonnet-20241022"
