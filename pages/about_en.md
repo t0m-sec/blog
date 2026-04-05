@@ -6,8 +6,8 @@ title: About
 
 **Security Researcher | Security Consultant**
 
-Engaged in security research and consulting.
-Specializing in malware analysis and reverse engineering.
+I work in security research and consulting.
+My specializations include malware analysis and reverse engineering.
 
 ### Areas of Expertise
 
@@ -18,7 +18,7 @@ Specializing in malware analysis and reverse engineering.
 
 ### About This Blog
 
-This blog shares findings from security research and insights gained through malware analysis as a hobby.
+This blog is where I share findings from my security research, as well as insights gained through malware analysis as a personal pursuit.
 
 ### Contact
 
