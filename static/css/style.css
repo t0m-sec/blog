@@ -385,6 +385,7 @@ ul, ol {
   border-radius: var(--radius-full);
   font-size: 0.78rem;
   color: var(--text-secondary);
+  white-space: nowrap;
   transition: all var(--transition-fast);
 }
 
@@ -515,6 +516,7 @@ ul, ol {
   padding: 3px 8px;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
+  white-space: nowrap;
   transition: all var(--transition-fast);
 }
 
@@ -617,6 +619,7 @@ ul, ol {
   border-radius: var(--radius-full);
   font-size: 0.8rem;
   color: var(--text-secondary);
+  white-space: nowrap;
   transition: all var(--transition-fast);
 }
 
